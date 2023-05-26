@@ -1,13 +1,52 @@
 <html>
-    <style>
 
-    </style>
+<h1>Rock Paper Scissors!</h1>
+<p> Type Rock, Paper, or Scissors. The computer will try to compete.</p>
+<input id="userSelection" type="text" class="userSelection">
+<input id="fight" type="submit">
+<button id="Play again"> Play again </button>
+<p id="userChose"> </p>
+<p id="computerChose"></p>
+<p id="result"></p>
+
+    <style></style>
     <script>
-function getComputerChoice() {
-    let rpsChoices = ['Rock','Paper','Scissors']
-    const randomChoices = Math.floor(Math.random()* rpsChoices.length)
-    return (randomChoices, rpsChoices[random]);
+    const fight = document.getElementById("fight");
+    const userPreChoice = document.querySelector(".userSelection");
+    const rpsComputer = ['Rock','Paper','Scissors'];
+    const computerRandom = rpsComputer[Math.floor(Math.random() * rpsComputer.length)];
+    let computerFinalChoice;    
+    let userFinalChoice;
+   
+
+       function getResult() {
+
+          let userFinalChoice  = (userPreChoice.value).toUpperCase();
+        if (userFinalChoice === "ROCK" || userFinalChoice === "PAPER" || userFinalChoice === "SCISSORS") {
+            let userChose = document.getElementById("userChose").innerHTML = `You chose ${userFinalChoice}!`;
+            let computerFinalChoice = computerRandom.toUpperCase();
+            let computerChose = document.getElementById("computerChose").innerHTML = `The computer chose ${computerFinalChoice}!`;
+            if (userFinalChoice == computerFinalChoice) {
+    let result = document.getElementById("result").innerHTML = `It's a tie!`;
+  } else if (userFinalChoice == "ROCK" && computerFinalChoice == "SCISSORS") {
+    let result = document.getElementById("result").innerHTML = `You win!`;
+  } else if (userFinalChoice == "PAPER" && computerFinalChoice == "ROCK") {
+    let result = document.getElementById("result").innerHTML = `You win!`;
+  } else if (userFinalChoice == "SCISSORS" && computerFinalChoice == "PAPER") {
+    let result = document.getElementById("result").innerHTML = `You win!`;
+  } else {
+    let result = document.getElementById("result").innerHTML = `You lose!`;
+
+  }
+
+        } else {
+            let userChose = document.getElementById("userChose").innerHTML = `You must choose Rock, Paper, or Scissors.`;
+            let computerChose = document.getElementById("computerChose").innerHTML = `The computer cannot choose if you do not input a value.`;
+            let result = document.getElementById("result").innerHTML = ``;
+        }
 }
-getComputerChoice;
-</script>
+       
+    fight.addEventListener('click',getResult);
+
+    </script>
 </html>
